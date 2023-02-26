@@ -1,4 +1,6 @@
-import { getKeyboardStyleByLetter } from "../utils";
+import { getStyleByState } from "../wordleLogic/cellStyles";
+import { getLetterId } from "../utils";
+import "./styles.css";
 
 export default function Keyboard({ letterState }) {
   let letters = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
@@ -8,9 +10,9 @@ export default function Keyboard({ letterState }) {
     for (let j = 0; j < letters[i].length; j++) {
       row.push(
         <div
-          className="cell"
+          className="cell small"
           key={`SmallCell${i}-${j}`}
-          style={getKeyboardStyleByLetter(letters[i][j], letterState)}
+          style={getStyleByState(letterState[getLetterId(letters[i][j])])}
         >
           {letters[i][j]}
         </div>

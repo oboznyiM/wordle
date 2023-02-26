@@ -16,11 +16,11 @@ export function getKeyboardStyleByLetter(letter, letterState) {
     color: "black",
   };
 
-  if (letterState[getLetterId(letter)] == 2) {
+  if (letterState[getLetterId(letter)] === 2) {
     style["color"] = "white";
     style["backgroundColor"] = "green";
   }
-  if (letterState[getLetterId(letter)] == 1) {
+  if (letterState[getLetterId(letter)] === 1) {
     style["color"] = "white";
     style["backgroundColor"] = "yellow";
   }

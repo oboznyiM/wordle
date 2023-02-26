@@ -1,1 +1,2 @@
 It's a simple Wordle game with emphasis put on the logic. It lacks some animations but should work completely fine with repeating letters and detecting&displaying yellow and green blocks.
+It is scalable, i.e. should work fine if you change the constants for the number of words and guessed word in lines 21 and 22 of components/App.js. I planned to add "difficulty levels" but I didn't manage to add form support from the user.

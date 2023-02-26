@@ -9,17 +9,21 @@ import {
   processBackspace,
   processEnter,
 } from "../wordleLogic/processKeys";
-const MAXWORDS = 6;
-const WORD = "HELLO";
+
+function kek(val) {
+  alert(val);
+}
 
 export default function App() {
   const [words, setWords] = useState([["", false]]);
   const [letterState, setLetterState] = useState(Array(26).fill(-1));
   const [WON, setWON] = useState(false);
+  const [MAXWORDS, setMAXWORDS] = useState(6);
+  const [WORD, setWORD] = useState("HELLO");
   useKeypress((key) => {
     if (WON) return;
     if (isAlpha(key)) {
-      processAlpha(words, setWords, key);
+      processAlpha(words, setWords, key, WORD);
     }
     if (key === "Backspace") {
       processBackspace(words, setWords, key);

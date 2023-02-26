@@ -3,6 +3,7 @@ import { getLetterId } from "../utils";
 
 function updateLetterState(word, letterState, setLetterState, WORD) {
   let newLetterState = [...letterState];
+  console.log(WORD);
   let states = getCellStates(word, WORD);
   for (let i = 0; i < word.length; i++) {
     newLetterState[getLetterId(word[i])] = Math.max(
@@ -13,10 +14,10 @@ function updateLetterState(word, letterState, setLetterState, WORD) {
   setLetterState(newLetterState);
 }
 
-export function processAlpha(words, setWords, key) {
+export function processAlpha(words, setWords, key, WORD) {
   key = key.toUpperCase();
   let pos = 0;
-  while (pos < words.length && words[pos][0].length === 5) {
+  while (pos < words.length && words[pos][0].length === WORD.length) {
     pos++;
   }
   let newWords = [...words];
@@ -36,6 +37,7 @@ function animateWin(
   WORD
 ) {
   setWON(true);
+  console.log(WORD);
   updateLetterState(words[pos][0], letterState, setLetterState, WORD);
   alert("YOU WON");
 }
@@ -55,12 +57,13 @@ export function processEnter(
   MAXWORDS
 ) {
   let pos = words.length - 1;
-  if (words[pos][0].length !== 5) return;
+  if (words[pos][0].length !== WORD.length) return;
   words[pos][1] = true;
 
   setWords(words);
+  console.log("ENTER: ", WORD);
   if (words[pos][0] === WORD) {
-    animateWin(words, pos, letterState, setLetterState, WON, setWON);
+    animateWin(words, pos, letterState, setLetterState, WON, setWON, WORD);
   }
   if (words.length < MAXWORDS) {
     words.push(["", false]);
